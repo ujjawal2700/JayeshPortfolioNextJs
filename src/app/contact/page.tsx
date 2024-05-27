@@ -1,15 +1,15 @@
 "use client";
-
 import React from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
+import axios from "axios";
 
 export default function Page() {
   async function handleSubmit(event: any) {
     event.preventDefault();
-    const response = await fetch("https://api.web3forms.com/submit", {
+    const response = await fetch("https://api.web3forms.com/submit", {  
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default function Page() {
         feel free to send your msg along with your fullname and email.
       </p>
 
-      <form className="my-8" onSubmit={() => {handleSubmit}}>
+      <form className="my-8">
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="name">Full Name</Label>
@@ -58,7 +58,7 @@ export default function Page() {
 
         <button
           className="bg-gradient-to-br mb-4 relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-          type="submit"
+          type="submit" onClick={()=>{handleSubmit}}
         >
           Send &rarr;
           <BottomGradient />
